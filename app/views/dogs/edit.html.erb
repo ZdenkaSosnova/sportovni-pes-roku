@@ -1,12 +1,4 @@
-<% if @dog.errors.any? %>
-    <h2>The following errors occured</h2>
-    <ul>
-        <% @dog.errors.full_messages.each do |msg| %>
-            <li> <%= msg %> </li>
-            <% end %>
-    </ul>
-<% end %>
-
+<%= render partial: "shared/error", locals: { obj: @dog } %>    
 
 <div class="container">
     <%= form_with(model: @dog, local: true) do |f| %>

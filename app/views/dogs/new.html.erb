@@ -1,13 +1,5 @@
-<div class="container">
-<% if @dog.errors.any? %>
-    <h2> The following erros prevented the article from being saved </h2>
-    <ul>
-    <% @dog.errors.full_messages.each do |msg| %>
-        <li><%=  msg %></li>
-    <% end %>
-    </ul>
-<% end %>
-</div>
+<%= render partial: "shared/error", locals: { obj: @dog } %>    
+
 
 
 <div class="container">

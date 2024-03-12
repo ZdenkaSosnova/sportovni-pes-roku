@@ -1,0 +1,23 @@
+<div class="container">
+    <% if obj.errors.any? %>
+        <h2> The following erros prevented the <%= obj.class.name.downcase %> from beeing saved </h2>
+        <% obj.errors.full_messages.each do |msg| %>
+        <div class="alert alert-danger text-center" role="alert">
+            <%=  msg %>
+        </div>
+        <% end %>
+    <% end %>
+    </div>
+
+    
+    
+    
+
+<!--
+      <ul>
+        <% obj.errors.full_messages.each do |msg| %>
+            <li><%=  msg %></li>
+        <% end %>
+        </ul>
+
+        -->

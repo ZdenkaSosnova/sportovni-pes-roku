@@ -1,14 +1,4 @@
-<div class="container">
-    <% if @owner.errors.any? %>
-        <h2> The following erros prevented the article from being saved </h2>
-        <ul>
-        <% @owner.errors.full_messages.each do |msg| %>
-            <li><%=  msg %></li>
-        <% end %>
-        </ul>
-    <% end %>
-    </div>
-    
+<%= render partial: "shared/error", locals: { obj: @owner } %>    
     
     <div class="container">
         <%= form_with(model: @owner, local: true) do |f| %>
@@ -25,13 +15,13 @@
             <%= f.text_field :password, class: "form-control", placeholder: "Password" %>
           </div>
           <div class="mb-3">
-            <%= f.submit class: "btn btn-primary" %>
+            <%= f.submit "Sign up", class: "btn btn-primary" %>
           </div>
         <% end %>
         </div>
     
     <div class="container">
-        <%= link_to "Back to the home page", dogs_path %>
+        <%= link_to "Back to the home page", root_path %>
     </div> 
     
     
