@@ -13,11 +13,12 @@ class DogsController < ApplicationController
 
     def create 
         @dog = Dog.new(params.require(:dog).permit(:dog_name, :date_of_birth))
+        @dog.owner = Owner.first
         if @dog.save 
             flash[:notice] = "Member was successfully created."
             redirect_to dogs_path
         else
-            render "new"
+            render "new", status: 422
         end
     end
 
@@ -31,7 +32,7 @@ class DogsController < ApplicationController
             flash[:notice] = "Member was successfully updated."
             redirect_to dogs_path
         else
-            render "edit"
+            render "edit", status: 422
         end
     end
 
