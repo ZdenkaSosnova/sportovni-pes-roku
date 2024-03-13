@@ -1,0 +1,29 @@
+<div class="container text-center">
+    <h1>List of all members</h1>
+</div>
+<div class="container">
+<table class="table table-dark text-center">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email adress</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    <%@members.each do |member| %>
+      <tr>
+        <td><%= link_to "#{member.first_name} #{member.last_name}", member_path(member), class: "hidden-link"%> </td>
+        <td><%= member.email %> </td>
+        <td>
+            <% if Owner.find_by(first_name: member.first_name, last_name: member.last_name)%>
+            <%= button_to "Show details", member_path(member), method: :get, class: "btn btn-success" %>
+            <% else %>
+            <%= link_to "Create account", signup_path(first_name: member.first_name, last_name: member.last_name, email: member.email), method: :get, class: "btn btn-danger" %>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -3,7 +3,8 @@
         <div class="card-header"><%= @dog.dog_name%></div>
             <div class="card-body">
                 <h5 class="card-title"><%= @dog.date_of_birth %></h5>
-                <p class="card-text"><%= @dog.owner.name %></p>
+                <p class="card-text"><%= @dog.owner.first_name %><%= @dog.owner.last_name %></p>
+                <%= link_to "My owner detail", member_path(@dog.owner.member), class: "btn btn-success" %>
             </div>
     </div>
 </div>

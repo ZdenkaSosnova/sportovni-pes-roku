@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :dogs
   get "signup", to: "owners#new"
   resources :owners, except: [:new]
+  resources :members, only: [:index, :show]
 end

@@ -1,11 +1,14 @@
 class Owner < ApplicationRecord
-    before_save { self.email = email.downcase}
-    before_save { self.name = name.titleize}
+    belongs_to :member
+    before_validation { self.email = email.downcase}
     has_many :dogs
-    validates :name, presence: true, 
-            length: {minimum: 5, maximum: 25},
-            uniqueness: true
+    validates :first_name, presence: true, 
+            length: {minimum: 2, maximum: 25}
+    validates :last_name, presence: true, 
+            length: {minimum: 2, maximum: 25}
     validates :email, presence: true, 
             format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "format is invalid" }
     has_secure_password
+
+
 end

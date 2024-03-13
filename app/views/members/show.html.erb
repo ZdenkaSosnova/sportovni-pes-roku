@@ -1,0 +1,33 @@
+<div class="container text-center">
+<h2>Info about member <%= @member.first_name%> <%= @member.last_name %></h2>
+</div>
+<% if @owner %>
+  <div class="card text-white bg-dark mb-3 text-center" style="max-width: 18rem;">
+    <div class="card-header">You have already created your account</div>
+    <div class="card-body">
+      <%= button_to "Edit account - later on", edit_owner_path(@owner), class: "btn btn-success" %>
+    </div>
+  </div>
+  <% else %>
+  <div class="card text-white bg-dark mb-3 text-center" style="max-width: 18rem;">
+    <div class="card-header">You have not created your account</div>
+    <div class="card-body">
+      <%= button_to "Edit account", signup_path, class: "btn btn-danger" %>
+    </div>
+  </div>
+<%end %>
+<% if @dogs%>
+  <% @dogs.each do |dog| %>
+  <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+    <div class="card-header text-center"><%= dog.dog_name %></div>
+    <div class="card-body text-center">
+      <p> <%= dog.date_of_birth %></p>
+    </div>
+  </div>
+  <%end %>
+<% else %>
+<p>You have not added any of your dogs</p>
+<%end %>
+
+
+
