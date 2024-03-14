@@ -1,25 +1,27 @@
-<%= render partial: "shared/error", locals: { obj: @owner } %>    
-    
+<%= render partial: "shared/error", locals: { obj: @owner } %>   
+
+<h1 class="text-center">Edit your profile</h1>
+
     <div class="container">
         <%= form_with(model: @owner, local: true) do |f| %>
           <div class="mb-3">
             <%= f.label :first_name, class: "form-label" %>
-            <%= f.text_field :first_name, class: "form-control", placeholder: "First name" , value: params[:first_name]%>
+            <%= f.text_field :first_name, class: "form-control", placeholder: "First name" %>
           </div>
           <div class="mb-3">
             <%= f.label :last_name, class: "form-label" %>
-            <%= f.text_field :last_name, class: "form-control", placeholder: "Last name", value: params[:last_name] %>
+            <%= f.text_field :last_name, class: "form-control", placeholder: "Last name" %>
           </div>
           <div class="mb-3">
             <%= f.label :email, class: "form-label" %>
-            <%= f.text_field :email, class: "form-control", placeholder: "Email", value: params[:email]%>
+            <%= f.text_field :email, class: "form-control", placeholder: "Email"%>
           </div>
           <div class="mb-3">
             <%= f.label :password, class: "form-label" %>
-            <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+            <%= f.text_field :password, class: "form-control"%>
           </div>
           <div class="mb-3">
-            <%= f.submit "Sign up", class: "btn btn-primary" %>
+            <%= f.submit "Update account", class: "btn btn-primary" %>
           </div>
         <% end %>
         </div>

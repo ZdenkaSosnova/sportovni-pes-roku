@@ -16,7 +16,7 @@ class DogsController < ApplicationController
         @dog.owner = Owner.first
         if @dog.save 
             flash[:notice] = "Member was successfully created."
-            redirect_to dogs_path
+            redirect_to owner_path(Owner.find(@dog.owner_id))
         else
             render "new", status: 422
         end
@@ -29,8 +29,8 @@ class DogsController < ApplicationController
     def update
         @dog = Dog.find(params[:id])
         if @dog.update(params.require(:dog).permit(:dog_name, :date_of_birth))
-            flash[:notice] = "Member was successfully updated."
-            redirect_to dogs_path
+            flash[:notice] = "Details about your dog were successfully updated."
+            redirect_to owner_path(Owner.find(@dog.owner_id))
         else
             render "edit", status: 422
         end
@@ -39,6 +39,6 @@ class DogsController < ApplicationController
     def destroy
         @dog = Dog.find(params[:id])
         @dog.destroy
-        redirect_to dogs_path
+        redirect_to owner_path(Owner.find(@dog.owner_id))
     end
 end

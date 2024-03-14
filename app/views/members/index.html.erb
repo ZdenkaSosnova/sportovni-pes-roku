@@ -16,8 +16,9 @@
         <td><%= link_to "#{member.first_name} #{member.last_name}", member_path(member), class: "hidden-link"%> </td>
         <td><%= member.email %> </td>
         <td>
-            <% if Owner.find_by(first_name: member.first_name, last_name: member.last_name)%>
-            <%= button_to "Show details", member_path(member), method: :get, class: "btn btn-success" %>
+            <% owner = Owner.find_by(first_name: member.first_name, last_name: member.last_name)%>
+            <% if owner%>
+            <%= button_to "Show details", owner_path(owner), method: :get, class: "btn btn-success" %>
             <% else %>
             <%= link_to "Create account", signup_path(first_name: member.first_name, last_name: member.last_name, email: member.email), method: :get, class: "btn btn-danger" %>
             <% end %>
