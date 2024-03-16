@@ -15,6 +15,7 @@ class OwnersController < ApplicationController
             @owner.member = member
         end
         if @owner.save
+            session[:owner_id] = @owner.id
             flash[:notice] = "#{@owner.first_name} welcome"
             redirect_to dogs_path
         else

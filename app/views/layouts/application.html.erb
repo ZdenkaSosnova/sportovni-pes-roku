@@ -8,6 +8,8 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag 'herding_form' %>
   </head>
 
   <body>
@@ -16,7 +18,7 @@
     <% end %>
 
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
-      <a class="navbar-brand" href="#">Sportovní pes roku</a>
+      <a class="navbar-brand" href="<%= about_path%>">Sportovní pes roku</a>
       <button class="navbar-toggler" type="button" data-toggle='collapse' data-target="#navbarNav" aria-controls="
        <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,32 +26,41 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link active" aria-current="page" href="<%= root_path %>">Home</a>
+            <a class="nav-link active" aria-current="page" href="<%= root_path %>">Domovská stránka</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<%= members_path %>">Members</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<%= dogs_path %>">Dogs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="<%= signup_path %>">Sign up</a>
+            <a class="nav-link active" aria-current="page" href="<%= members_path %>">Seznam členů KCHCS</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown 
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;">
+              Výsledky 
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="<%=herdings_path %>">Pasení</a></li>
+              <li><a class="dropdown-item" href="#">Agility</a></li>
+              <li><a class="dropdown-item" href="#">DogDancing</a></li>
             </ul>
           </li>
-        </ul>
+          <% if logged_in? %>  
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<%= owner_path(current_owner) %>"><%= "#{current_owner.first_name} #{current_owner.last_name}" %></a>
+              </li>
+              <li class="nav-item">
+                <li class="nav-item">
+                  <%= link_to "Log out", logout_path, method: :delete, data: { turbo_method: :delete, "turbo-confirm": "Are you sure?" }, class: "nav-link active", style: "color: red;" %>
+              </li>
+          <% else %>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<%= login_path %>" style="color: yellow;">Přihlásit se</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="<%= signup_path %>" style="color: greenyellow;">Registrovat se</a>
+                </li>
+          <%end %>
+          </ul>
+
       </div>
     </nav>
     <%= yield %>
   </body>
 </html>
-

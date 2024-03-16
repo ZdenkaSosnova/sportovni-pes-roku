@@ -1,11 +1,5 @@
 @import "bootstrap";
 
-.container {
-    margin-top: 5%;
-    text-align: center;
-
-}
-
 .card {
     margin-top: 5px;
 }
@@ -31,16 +25,24 @@
 
 .container {
     text-align: center;
-    margin-top: 20px;
-    margin-left: 50px;
-    margin-right: 50px;
 }
+
+.container {
+    margin: 20px auto 0; /* Center the table horizontally and add top margin */
+}
+
 
 .navbar-brand {
     margin-left: 20px;
 }
 
-
+ul {
+    list-style-type: none;
+  }
+  
+.hidden {
+    display: none;
+  }
 
 
 

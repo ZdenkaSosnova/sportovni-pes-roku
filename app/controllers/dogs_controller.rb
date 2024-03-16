@@ -13,9 +13,9 @@ class DogsController < ApplicationController
 
     def create 
         @dog = Dog.new(params.require(:dog).permit(:dog_name, :date_of_birth))
-        @dog.owner = Owner.first
+        @dog.owner = current_owner
         if @dog.save 
-            flash[:notice] = "Member was successfully created."
+            flash[:notice] = "Údaje psa byly přidány"
             redirect_to owner_path(Owner.find(@dog.owner_id))
         else
             render "new", status: 422
@@ -29,7 +29,7 @@ class DogsController < ApplicationController
     def update
         @dog = Dog.find(params[:id])
         if @dog.update(params.require(:dog).permit(:dog_name, :date_of_birth))
-            flash[:notice] = "Details about your dog were successfully updated."
+            flash[:notice] = "Detaily psa byly úspěšně upraveny"
             redirect_to owner_path(Owner.find(@dog.owner_id))
         else
             render "edit", status: 422

@@ -13,13 +13,13 @@
     <tbody>
     <%@members.each do |member| %>
       <tr>
-        <td><%= link_to "#{member.first_name} #{member.last_name}", member_path(member), class: "hidden-link"%> </td>
+        <td><%= "#{member.first_name} #{member.last_name}"%> </td>
         <td><%= member.email %> </td>
         <td>
             <% owner = Owner.find_by(first_name: member.first_name, last_name: member.last_name)%>
             <% if owner%>
             <%= button_to "Show details", owner_path(owner), method: :get, class: "btn btn-success" %>
-            <% else %>
+            <% elsif !logged_in? %>
             <%= link_to "Create account", signup_path(first_name: member.first_name, last_name: member.last_name, email: member.email), method: :get, class: "btn btn-danger" %>
             <% end %>
         </td>

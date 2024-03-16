@@ -1,0 +1,19 @@
+<div class="container">
+<%= form_with(model: @herding, local: true) do |f| %>
+  <div class="field">
+    <%= f.label :category %>
+    <%= f.select :category, [["NHT", "NHT"], ["HWT", "HWT"], ["Other", "Other"]], {}, id: "herding_category" %>
+  </div>
+  <div class="field" id="points-field">
+    <%= f.label :points %>
+    <%= f.number_field :points %>
+  </div>
+  <div class="other-fields hidden">
+    <div class="mb-3">
+      <%= f.label :position, "Pořadí",class: "form-label" %>
+      <%= f.number_field :position, class: "form-control" %>
+    </div>
+  </div>
+  <%= f.submit submit_text: "btn btn-primary" %>
+    <% end %>
+  </div>

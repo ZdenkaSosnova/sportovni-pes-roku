@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>Sportovní pes roku</h1>
+    <h2>Pasení</h2>
+</div>
+
+<div class="container">
+    <table class="table table-dark text-center">
+        <thead>
+        <tr>
+            <th scope="col">Jméno</th>
+            <th scope="col">Datum narození</th>
+            <th scope="col">Majitel</th>
+            <th scope="col">Počet bodů</th>
+            <th scope="col">Zobrazit podrobnosti</th>
+        </tr>
+        </thead>
+        <tbody>
+            
+        <% @top_10_dogs_dictionary.each do |key, value| %>
+        <% dog = Dog.find(key)%>
+        <tr>
+            <td><%= dog.dog_name %> </td>
+            <td><%= dog.date_of_birth %></td>
+            <td><%= dog.owner.first_name%> <%= dog.owner.last_name%> </td>
+            <td> <%= value %></td>
+            <td> <%= link_to "Detaily", dog_path(dog), method: :get, class: "btn btn-success" %></td>
+        </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>
+

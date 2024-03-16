@@ -1,0 +1,31 @@
+<div class="container text-center">
+    <h2>Info about member <%= @owner.first_name%> <%= @owner.last_name %></h2>
+    <% dogs = Dog.where(owner_id: @owner.id) %>
+    <% if dogs.present? && !dogs.empty? %>
+        <h4>Info about your dogs</h4>
+        <div class="container">
+            <table class="table table-dark text-center">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date of birth</th>
+                    <th scope="col" colspan="1">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    
+                <%dogs.each do |dog| %>
+                <tr>
+                    <td><%= dog.dog_name %> </td>
+                    <td><%= dog.date_of_birth %></td>
+                    <td>    
+                        <%= link_to "Show details", dog_path(dog), method: :get, class: "btn btn-success" %>
+                    </td>
+                </tr>
+                <% end %>
+                </tbody>
+            </table>
+        </div>
+    <% end %>
+    
+    

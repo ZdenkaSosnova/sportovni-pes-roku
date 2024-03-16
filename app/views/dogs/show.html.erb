@@ -1,11 +1,6 @@
-<div class="container">
-    <div class="card text-white bg-warning mb-3 text-center" style="max-width: 18rem;">
-        <div class="card-header"><%= @dog.dog_name%></div>
-            <div class="card-body">
-                <h5 class="card-title"><%= @dog.date_of_birth %></h5>
-                <p class="card-text"><%= @dog.owner.first_name %><%= @dog.owner.last_name %></p>
-                <%= link_to "My owner detail", owner_path(@dog.owner), class: "btn btn-success" %>
-            </div>
-    </div>
-</div>
-  
+<% if logged_in? && current_owner.id == @dog.owner_id %>
+    <%= render partial: "dog_owner"%>
+<% else %>
+    <%= render partial: "other_owners"%>
+<% end %>
+

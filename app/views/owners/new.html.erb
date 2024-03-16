@@ -1,6 +1,6 @@
 <%= render partial: "shared/error", locals: { obj: @owner } %>    
     
-    <div class="container">
+<div class="container">
         <%= form_with(model: @owner, local: true) do |f| %>
           <div class="mb-3">
             <%= f.label :first_name, class: "form-label" %>
@@ -22,7 +22,7 @@
             <%= f.submit "Sign up", class: "btn btn-primary" %>
           </div>
         <% end %>
-        </div>
+</div>
     
     <div class="container">
         <%= link_to "Back to the home page", root_path %>
