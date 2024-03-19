@@ -9,6 +9,7 @@ class OwnersController < ApplicationController
     end
 
     def create
+        debugger
         @owner = Owner.new(params.require(:owner).permit(:first_name, :last_name, :email, :password))
         member = Member.find_by(first_name: params[:owner][:first_name], last_name: params[:owner][:last_name])
         if member.present? && !member.owner.present?
@@ -16,8 +17,8 @@ class OwnersController < ApplicationController
         end
         if @owner.save
             session[:owner_id] = @owner.id
-            flash[:notice] = "#{@owner.first_name} welcome"
-            redirect_to dogs_path
+            flash[:notice] = "Člen #{@owner.first_name} #{@owner.last_name} byl úspěšně registrován"
+            redirect_to owner_path(@owner)
         else
             render "new", status: 422
         end
@@ -30,7 +31,7 @@ class OwnersController < ApplicationController
     def update
         @owner = Owner.find(params[:id])
         if @owner.update(params.require(:owner).permit(:first_name, :last_name, :email, :password))
-            flash[:notice] = "Your account was upadated"
+            flash[:notice] = "Váš účet byl úspěšně upraven"
             redirect_to members_path
         else
             render "edit"

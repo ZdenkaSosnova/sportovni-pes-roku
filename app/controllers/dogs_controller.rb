@@ -29,7 +29,7 @@ class DogsController < ApplicationController
     def update
         @dog = Dog.find(params[:id])
         if @dog.update(params.require(:dog).permit(:dog_name, :date_of_birth))
-            flash[:notice] = "Detaily psa byly úspěšně upraveny"
+            flash[:notice] = "Údaje psa byly úspěšně upraveny"
             redirect_to owner_path(Owner.find(@dog.owner_id))
         else
             render "edit", status: 422

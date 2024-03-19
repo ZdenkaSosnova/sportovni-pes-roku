@@ -5,9 +5,9 @@
 <table class="table table-dark text-center">
     <thead>
       <tr>
-        <th scope="col">Name</th>
+        <th scope="col">Jméno</th>
         <th scope="col">Email adress</th>
-        <th scope="col">Action</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -15,13 +15,13 @@
       <tr>
         <td><%= "#{member.first_name} #{member.last_name}"%> </td>
         <td><%= member.email %> </td>
-        <td>
             <% owner = Owner.find_by(first_name: member.first_name, last_name: member.last_name)%>
+            <td>
             <% if owner%>
             <%= button_to "Show details", owner_path(owner), method: :get, class: "btn btn-success" %>
             <% elsif !logged_in? %>
-            <%= link_to "Create account", signup_path(first_name: member.first_name, last_name: member.last_name, email: member.email), method: :get, class: "btn btn-danger" %>
-            <% end %>
+              <%= link_to "Registrovat se", signup_path(first_name: member.first_name, last_name: member.last_name, email: member.email), method: :get, class: "btn btn-secondary" %>
+              <% end %>
         </td>
       </tr>
     <% end %>

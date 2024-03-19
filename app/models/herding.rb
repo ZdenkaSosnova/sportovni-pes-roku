@@ -2,19 +2,44 @@ class Herding < ApplicationRecord
     belongs_to :dog
     before_save :compute_final_points
 
-    validates :category, presence: true
-    validates :points, presence: true, numericality:{ only_integer: true, message: "must be an integer" }
+    validates :points, presence: true, numericality:{ only_integer: true, message: "must be an integer" }, allow_blank: true
     validates :num_dogs, numericality:{ only_integer: true, message: "must be an integer" }, allow_blank: true
     validates :position, numericality:{ only_integer: true, message: "must be an integer" }, allow_blank: true
     validate :position_and_num_dogs_presence_for_iht
     validate :points_range
+    validate :points_for_hwt_iht
+    validate :compulsory_fields
 
     private
+
+    def compulsory_fields
+        if category.blank?
+            errors.add(:base, "Kategorie musí být vybrána.")
+        end
+        if event_place.blank?
+            errors.add(:base, "Místo konání akce musí být vyplněno")
+        end
+        if event_date.blank?
+            errors.add(:base, "Datum konání akce musí být vyplněn")
+        end
+    end
+
+    def points_for_hwt_iht
+        if ["HWT", "IHT1", "IHT2", "IHT3"].include?(category)
+            if points.blank?
+                errors.add(:base, "V kategorii #{category} musí být specifikován počet bodů.")
+            end
+        end
+    end
 
     def position_and_num_dogs_presence_for_iht
         if ["IHT1", "IHT2", "IHT3"].include?(category)
             if position.blank? || num_dogs.blank?
                 errors.add(:base, "V kategorii #{category} musí být specifikován počet účastníků a pozice psa.")
+            elsif position <= 0 || num_dogs <=0
+                errors.add(:base, "Pozice nebo počet soupeřů nemohou být záporné.")
+            elsif position > num_dogs
+                errors.add(:base, "Počet soupeřů nemůže být menší než výsledná pozice psa")
             end
         end
     end
@@ -22,7 +47,7 @@ class Herding < ApplicationRecord
     def compute_final_points
         case category
         when "NHAT"
-            self.final.points = 30
+            self.final_points = 30
         when "HWT"
             self.final_points = self.points
         when "IHT1", "IHT2", "IHT3"

@@ -1,6 +1,6 @@
 <div class="container">
     <% if obj.errors.any? %>
-        <h2> The following erros prevented the <%= obj.class.name.downcase %> from beeing saved </h2>
+        <h2> Prosím, opravte následující chyby pro uložení </h2>
         <% obj.errors.full_messages.each do |msg| %>
         <div class="alert alert-danger text-center" role="alert">
             <%=  msg %>

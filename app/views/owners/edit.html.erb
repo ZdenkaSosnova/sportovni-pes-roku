@@ -1,33 +1,25 @@
 <%= render partial: "shared/error", locals: { obj: @owner } %>   
 
-<h1 class="text-center">Edit your profile</h1>
+<h1 class="text-center">Změnit přihlašovací údaje</h1>
 
     <div class="container">
         <%= form_with(model: @owner, local: true) do |f| %>
           <div class="mb-3">
-            <%= f.label :first_name, class: "form-label" %>
-            <%= f.text_field :first_name, class: "form-control", placeholder: "First name" %>
-          </div>
-          <div class="mb-3">
-            <%= f.label :last_name, class: "form-label" %>
-            <%= f.text_field :last_name, class: "form-control", placeholder: "Last name" %>
-          </div>
-          <div class="mb-3">
-            <%= f.label :email, class: "form-label" %>
+            <%= f.label :email, "Email", class: "form-label" %>
             <%= f.text_field :email, class: "form-control", placeholder: "Email"%>
           </div>
           <div class="mb-3">
-            <%= f.label :password, class: "form-label" %>
-            <%= f.text_field :password, class: "form-control"%>
+            <%= f.label :password, "Nové heslo", class: "form-label" %>
+            <%= f.password_field :password, class: "form-control"%>
           </div>
           <div class="mb-3">
-            <%= f.submit "Update account", class: "btn btn-primary" %>
+            <%= f.submit "Změnit", class: "btn btn-warning" %>
           </div>
         <% end %>
         </div>
     
     <div class="container">
-        <%= link_to "Back to the home page", root_path %>
+        <%= link_to "Zpět na Váš účet", owner_path(current_owner), class: "btn btn-success" %>
     </div> 
     
     

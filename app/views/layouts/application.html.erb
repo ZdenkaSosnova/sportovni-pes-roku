@@ -13,10 +13,6 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| %>
-        <%= msg %>
-    <% end %>
-
     <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #000000;">
       <a class="navbar-brand" href="<%= about_path%>">Sportovní pes roku</a>
       <button class="navbar-toggler" type="button" data-toggle='collapse' data-target="#navbarNav" aria-controls="
@@ -37,8 +33,6 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="<%=herdings_path %>">Pasení</a></li>
-              <li><a class="dropdown-item" href="#">Agility</a></li>
-              <li><a class="dropdown-item" href="#">DogDancing</a></li>
             </ul>
           </li>
           <% if logged_in? %>  
@@ -51,16 +45,25 @@
               </li>
           <% else %>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="<%= login_path %>" style="color: yellow;">Přihlásit se</a>
+                <a class="nav-link active" aria-current="page" href="<%= login_path %>" style="color: white;">Přihlásit se</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="<%= signup_path %>" style="color: greenyellow;">Registrovat se</a>
+                <a class="nav-link active" aria-current="page" href="<%= signup_path %>" style="color: white;">Registrovat se</a>
                 </li>
           <%end %>
           </ul>
 
       </div>
     </nav>
+    <div class="container">   
+      <% flash.each do |name, msg| %>
+    <div class="alert <%= bootstrap_class_for(name) %> alert-dismissible fade show" role="alert">
+    <%= msg %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <% end %>
+
+    </div>
     <%= yield %>
   </body>
 </html>

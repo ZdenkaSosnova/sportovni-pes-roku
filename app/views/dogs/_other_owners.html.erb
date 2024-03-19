@@ -1,6 +1,5 @@
 <div class="container text-center">
-    <h2>Info about <%= @dog.dog_name%></h2>
-    <%= link_to "Add new entry", new_herding_path(dog_id: @dog.id), method: :get, class: "btn btn-success" %>
+    <h2>Stránka psa <%= @dog.dog_name%></h2>
     
 </div>
 <% results = Herding.where(dog_id: @dog.id) %>
@@ -14,6 +13,11 @@
             <thead>
             <tr>
                 <th scope="col">Kategorie</th>
+                <th scope="col">Místo konání akce</th>
+                <th scope="col">Datum konání akce</th>
+                <th scope="col">Počet bodů</th>
+                <th scope="col">Pořadí</th>
+                <th scope="col">Počet soupeřů</th>
                 <th scope="col">Počet získaných bodů</th>
             </tr>
             </thead>
@@ -22,7 +26,12 @@
             <%results.each do |r| %>
             <tr>
                 <td><%= r.category %> </td>
-                <td><%= r.final_points %></td>    
+                <td><%= r.event_place %> </td>
+                <td><%= r.event_date.strftime("%d.%m.%Y") %> </td>
+                <td><%= r.points %> </td>
+                <td><%= r.position %> </td>
+                <td><%= r.num_dogs %> </td>
+                <td><%= r.final_points %></td>
             </tr>
             <% end %>
             </tbody>
@@ -32,5 +41,5 @@
 </div>
 <% end %>
 <div class="container">
-<%= link_to "Back to owner", owner_path(@dog.owner_id), method: :get, class: "btn btn-success" %>
+<%= link_to "Informace o majiteli", owner_path(@dog.owner_id), method: :get, class: "btn btn-success" %>
 </div>

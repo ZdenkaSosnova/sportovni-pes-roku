@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     categorySelect.addEventListener('change', function() {
       const selectedCategory = this.value;
   
-      if (selectedCategory === 'NHT') {
+      if (selectedCategory === 'NHAT') {
         pointsField.classList.add('hidden');
         otherFields.classList.add('hidden');
       } else if (selectedCategory === 'HWT') {
@@ -25,14 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function resetForm() {
       const selectedCategory = categorySelect.value;
   
-      if (selectedCategory === 'NHT') {
+      if (selectedCategory === 'NHAT') {
         pointsField.classList.add('hidden');
         otherFields.classList.add('hidden');
       } else if (selectedCategory === 'HWT') {
         pointsField.classList.remove('hidden');
         otherFields.classList.add('hidden');
       } else {
-        pointsField.classList.add('hidden');
+        pointsField.classList.remove('hidden');
         otherFields.classList.remove('hidden');
       }
     }

@@ -16,7 +16,7 @@ class HerdingsController < ApplicationController
     end
 
     def create
-        @herding = Herding.new(params.require(:herding).permit(:category, :points, :position, :dog_id, :num_dogs))
+        @herding = Herding.new(params.require(:herding).permit(:category, :points, :position, :dog_id, :num_dogs, :event_place, :event_date))
         if @herding.save 
             flash[:notice] = "Záznam byl úspěšně přidán"
             redirect_to dog_path(params[:herding][:dog_id])
@@ -27,22 +27,22 @@ class HerdingsController < ApplicationController
     end
 
     def edit
-        @herding = Herding.find_by(dog_id: params[:id])
-        @dog_id = params[:dog_id]
+        @herding = Herding.find(params[:id])
+        @dog_id = Herding.find(params[:id]).dog_id
     end
 
     def update
         @herding = Herding.find(params[:id])
-        if @herding.update(params.require(:herding).permit(:category, :points, :position, :dog_id, :num_dogs))
+        if @herding.update(params.require(:herding).permit(:category, :event_place, :event_date, :points, :position, :dog_id, :num_dogs))
             flash[:notice] = "Záznam byl úspěšně upraven"
             redirect_to dog_path(params[:herding][:dog_id])
         else 
+            @dog_id = @herding.dog_id
             render "edit", status: 422
         end
     end
 
     def destroy
-        debugger
         @herding = Herding.find(params[:id])
         dog_id = @herding.dog_id
         @herding.destroy
