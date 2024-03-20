@@ -1,18 +1,19 @@
 # Sportovní pes roku - Rails Application
 
-Welcome to **Sportovní pes roku** - a Rails application designed for managing the annual competition of sport dogs within the **Club chovatelů kola a šeltií** (KCHCS). This application allows club members to sign up their dogs for the competition, track their performance in various competitions throughout the year, and ultimately generate rankings based on specific rules.
+Welcome to **Sportovní pes roku** - a Rails application designed for managing the annual competition of sport dogs within the **Club chovatelů kolií a šeltií** (KCHCS). This application allows club members to sign up their dogs for the competition, track their performance in various competitions throughout the year, and ultimately generate rankings based on specific rules.
 
 ## Functionality
 
-- **Member Sign Up**: Club members can sign up their dogs for the competition by providing their first and last names, verifying their membership status.
-  
+- **Member Sign Up**: Only members of **Club chovatelů kola a šeltií** (KCHCS) are allowed to sign up for the competition. They need to provide their first and last names to verify their membership status and gain access to the application's functionality.
+
 - **Dog Registration**: Once signed up, members can register their dogs within the competition.
-  
+
 - **Competition Tracking**: Members can add details of each competition their dogs participate in, including the type of competition, points earned, and placement.
 
-- **Point Calculation**: The application calculates points earned by each dog based on predefined rules. Points are awarded for completing tests and competitions, both domestically and internationally.
+- **Point Calculation**: The application calculates points earned by each dog based on predefined rules. Points are awarded for completing tests and competitions, both domestically and internationally. 
 
-- **Ranking**: At the end of the year, the application generates a final ranking of each dog based on the accumulated points.
+- **Ranking**: The application provides real-time ranking updates for each dog. Rankings are continuously updated as new entries and competition results are added.
+
 
 ## Competition Rules
 
@@ -51,20 +52,5 @@ Welcome to **Sportovní pes roku** - a Rails application designed for managing t
 | 2nd Place    | 10     |
 | 3rd Place    | 5      |
 
-## Usage
-
-1. Clone this repository.
-2. Run `bundle install` to install dependencies.
-3. Set up the database with `rails db:create`, `rails db:migrate`.
-4. Start the Rails server with `rails server`.
-5. Navigate to `localhost:3000` in your web browser to access the application.
-
-## Contributors
-
-- [Your Name]
-
-## Issues
-
-If you encounter any issues or have suggestions for improvements, please feel free to open an issue [here](link-to-issue-tracker).
 
 Thank you for using Sportovní pes roku! 🐾
