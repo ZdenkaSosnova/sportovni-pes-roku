@@ -37,12 +37,35 @@ Welcome to **Sportovní pes roku** - a Rails application designed for managing t
 
 #### Coefficients
 
-| Type  | Coefficient (K) |
-|-------|-----------------|
-| HWT   | 1.0             |
-| IHT1  | 1.5             |
-| IHT2  | 2.0             |
-| IHT3  | 2.5             |
+<div class="container text-center">
+<table class="table table-dark text-center" style="width: 100%;">
+<thead>
+<tr>
+    <th style="width: 50%;">Type</th>
+    <th style="width: 50%;">Coefficient (K)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>HWT</td>
+    <td>1.0</td>
+</tr>
+<tr>
+    <td>IHT1</td>
+    <td>1.5</td>
+</tr>
+<tr>
+    <td>IHT2</td>
+    <td>2.0</td>
+</tr>
+<tr>
+    <td>IHT3</td>
+    <td>2.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+
 
 #### Placement Points
 
