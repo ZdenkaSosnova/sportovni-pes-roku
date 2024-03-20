@@ -69,11 +69,30 @@ Welcome to **Sportovní pes roku** - a Rails application designed for managing t
 
 #### Placement Points
 
-| Placement    | Points |
-|--------------|--------|
-| 1st Place    | 15     |
-| 2nd Place    | 10     |
-| 3rd Place    | 5      |
+<div class="container text-center">
+<table class="table table-dark text-center" style="width: 100%;">
+<thead>
+<tr>
+    <th style="width: 50%;">Placement</th>
+    <th style="width: 50%;">Points</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+    <td>1st Place</td>
+    <td>15</td>
+</tr>
+<tr>
+    <td>2nd Place</td>
+    <td>10</td>
+</tr>
+<tr>
+    <td>3rd Place</td>
+    <td>5</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 Thank you for using Sportovní pes roku! 🐾
