@@ -4,7 +4,7 @@ Welcome to **Sportovní pes roku** - a Rails application designed for managing t
 
 ## Functionality
 
-- **Member Sign Up**: Only members of **Club chovatelů kola a šeltií** (KCHCS) are allowed to sign up for the competition. They need to provide their first and last names to verify their membership status and gain access to the application's functionality.
+- **Member Sign Up**: Only members of **Club chovatelů kolií a šeltií** (KCHCS) are allowed to sign up for the competition. They need to provide their first and last names to verify their membership status and gain access to the application's functionality.
 
 - **Dog Registration**: Once signed up, members can register their dogs within the competition.
 
